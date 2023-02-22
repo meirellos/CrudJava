@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/delete" method="POST" modelAttribute="aluno">
+
+  ID:<br>
+  <input type="text" name="id" th:value="${user.id}" readOnly="true"><br>
+  <br>
+
+  Nome Aluno:<br>
+
+  <input type="text" name="name" th:value="${user.name}" readOnly="true"><br>
+
+  <br>
+
+  Email Aluno:<br>
+
+  <input type="text" name="email" th:value="${user.email}" readOnly="true"><br>
+
+
+
+  <input type="submit" value="Deletar">
+
+</form>
+</body>
+</html>

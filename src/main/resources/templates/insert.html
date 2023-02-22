@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Nexum</title>
+    <link
+            href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet"
+    />
+    <link href="./assets/style.css" rel="stylesheet" media="all" />
+
+    <script
+            src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"
+            integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+    ></script>
+</head>
+<body>
+<style>
+    html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+  }
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  *, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+  }
+
+  body {
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+
+  }
+
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  fieldset {
+    min-width: 0;
+    border: 0;
+  }
+
+  button {
+    outline: none;
+    background: none;
+    border: none;
+  }
+
+  .page-wrapper {
+    min-height: 100vh;
+  }
+
+
+  .bg-gra-02 {
+
+    background: linear-gradient(to top right, #4bf9b6 0%, #1e6442 100%);
+  }
+
+
+  .row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .row-space {
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+
+  .col-2 {
+    width: -webkit-calc((100% - 30px) / 2);
+    width: -moz-calc((100% - 30px) / 2);
+    width: calc((100% - 30px) / 2);
+  }
+
+  @media (max-width: 767px) {
+    .col-2 {
+      width: 100%;
+    }
+  }
+
+h2 {
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+    justify-content: center;
+  }
+
+
+  button {
+    outline: none;
+    background: none;
+    border: none;
+  }
+
+  .btn {
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    margin-left: 70px;
+    line-height: 50px;
+    padding: 0 50px;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    cursor: pointer;
+    font-size: 18px;
+    color: #fff;
+    font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+  }
+
+  .btn--green {
+    background: #57b846;
+    padding: 0 60px;
+  }
+
+  .btn--green:hover {
+    background: #4dae3c;
+  }
+
+  .btn--grey {
+    background: #464c5a;
+  }
+
+  .btn--grey:hover {
+    background: #5f6572;
+  }
+
+  .btn--radius-2 {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+  }
+
+  input {
+    outline: none;
+    margin: 0;
+    border: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+  }
+
+  .input--style-4 {
+    line-height: 50px;
+    background: #fafafa;
+    -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    -moz-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0 20px;
+    font-size: 16px;
+    color: #666;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+
+
+  .label {
+    font-size: 16px;
+    color: #555;
+    text-transform: capitalize;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 22px;
+  }
+
+  .input-group-icon {
+    position: relative;
+  }
+
+  .input-icon {
+    position: absolute;
+    font-size: 18px;
+    color: #999;
+    right: 18px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .title {
+    font-size: 24px;
+    color: #525252;
+    font-weight: 400;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: #fff;
+  }
+
+  .card-4 {
+    background: #fff;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-4 .card-body {
+    padding: 25px 45px;
+    padding-bottom: 40px;
+  }
+
+  @media (max-width: 767px) {
+    .card-4 .card-body {
+      padding: 50px 40px;
+
+    }
+  }
+
+
+  .p-t-130 {
+    padding-top: 100px;
+  }
+
+  .p-b-100 {
+    padding-bottom: 100px;
+  }
+
+  .wrapper {
+    margin: 0 auto;
+  }
+
+  .wrapper--w960 {
+    max-width: 960px;
+  }
+
+  .wrapper--w680 {
+    max-width: 680px;
+  }
+</style>
+
+<script>
+
+</script>
+
+
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Cadastro de Pessoa</h2>
+                <form action="#" th:action="@{/rest/insert}" th:object="${users}" method="post" id="form">
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Nome completo</label>
+                                <input class="input--style-4" th:field="*{name}" type="text" name="name" id="name" />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Email</label>
+                                <input class="input--style-4" th:field="*{email}" type="email" name="email" id="email"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="input-group">
+                            <label class="label">Tipo de Pessoa</label>
+                            <select name="" id="tipo-pessoa">
+                                <option value="fisica" selected>Pessoa Fisica</option>
+                                <option value="juridica">Pessoa Juridica</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div id="container-cpf">
+                                <label class="label">CPF</label>
+                                <input
+                                        type="text"
+                                        name="cpf"
+                                        id="cpf"
+                                        class="input--style-4" th:field="*{cpforcnpj}"
+                                />
+                            </div>
+                            <div id="container-cnpj" hidden>
+                                <label class="label">CNPJ</label>
+                                <input
+                                        type="text"
+                                        name="cnpj"
+                                        id="cnpj"
+                                        class="input--style-4" th:field="*{cpforcnpj}"
+                                />
+                            </div>
+                        </div>
+
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">CEP</label>
+                                <div class="input-group-icon">
+                                    <input
+                                            class="input--style-4"
+                                            type="text"
+                                            name="cep"
+                                            id="cep" th:field="*{cep}"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Logradouro</label>
+                                <input
+                                        class="input--style-4"
+                                        type="text"
+                                        name="logradouro"
+                                        placeholder=""
+                                        id="logradouro" th:field="*{logradouro}"
+                                        readonly
+                                />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Cidade</label>
+                                <input
+                                        class="input--style-4"
+                                        type="text"
+                                        name="cidade"
+                                        placeholder=""
+                                        id="cidade" th:field="*{cidade}"
+                                        readonly
+                                />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Endereço</label>
+                                <input
+                                        class="input--style-4"
+                                        type="text"
+                                        name="endereco"
+                                        placeholder=""
+                                        id="endereco" th:field="*{endereco}"
+                                        readonly
+                                />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">Bairro</label>
+                                <input
+                                        class="input--style-4"
+                                        type="text"
+                                        name="bairro"
+                                        placeholder=""
+                                        id="bairro" th:field="*{bairro}"
+                                        readonly
+                                />
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">UF</label>
+                                <input
+                                        class="input--style-4"
+                                        type="text"
+                                        name="uf"
+                                        placeholder=""
+                                        id="uf" th:field="*{estado}"
+                                        readonly
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-t-15">
+                        <button
+                                class="btn btn--radius-2 btn--grey"
+                                onclick="Clear()"
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                                class="btn btn--radius-2 btn--green"
+                                type="submit"
+                                onclick="Cadastrar()"
+                        >
+                            Salvar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+//
+
+$(document).ready(function() {
+
+    function limpaForm() {
+        // Limpa valores do formulário de cep.
+        $("#rua").val("");
+        $("#bairro").val("");
+        $("#cidade").val("");
+        $("#uf").val("");
+        $("#ibge").val("");
+    }
+
+    $("#cep").mask("99.999-999");
+
+
+    $("#cep").blur(function() {
+
+        var cep = $(this).val().replace(/\D/g, '');
+
+        //Verifica se campo cep possui valor informado.
+        if (cep != "") {
+
+            //Expressão regular para validar o CEP.
+            var validacep = /^[0-9]{8}$/;
+
+            //Valida o formato do CEP.
+            if(validacep.test(cep)) {
+
+                //Preenche os campos com "..." enquanto consulta webservice.
+                $("#logradouro").val("...");
+                $("#bairro").val("...");
+                $("#cidade").val("...");
+                $("#uf").val("...");
+                $("#endereco").val("...");
+                $("#ibge").val("...");
+
+                //Consulta o webservice viacep.com.br/
+                $.getJSON("https://viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+                    if (!("erro" in dados)) {
+                        $("#logradouro").val(dados.logradouro);
+                        $("#bairro").val(dados.bairro);
+                        $("#cidade").val(dados.localidade);
+                        $("#uf").val(dados.uf);
+                        $("#endereco").val(dados.endereco);
+                        $("#ibge").val(dados.ibge);
+                    }
+                    else {
+                        limpaForm();
+                        alert("CEP não encontrado.");
+                    }
+                });
+            } //end if.
+            else {
+                limpaForm();
+                alert("Formato de CEP inválido.");
+            }
+        }
+        else {
+            limpaForm();
+        }
+    });
+});
+
+$(document).ready(function(){
+
+});
+
+(function ($) {
+
+    $('#tipo-pessoa');
+    $('#cpf').mask('000.000.000-00');
+    $('#cnpj').mask('00.000.000/0000-00');
+
+    function getKindSupplier(type) {
+
+      if(type == 'fisica') {
+        $('#container-cpf').show();
+        $('#container-cnpj').hide();
+      }
+
+      if(type == 'juridica') {
+        $('#container-cnpj').show();
+        $('#container-cpf').hide();
+      }
+
+      if(type == "") {
+        $('#container-cnpj, #container-cpf').hide();
+      }
+
+    }
+
+    $(document).on('change', '#tipo-pessoa', function () {
+      getKindSupplier( $(this).val() );
+    });
+
+  }(jQuery));
+
+
+</script>
+
+<script src="./js/jquery.mask.js"></script>
+<script src="./js/jquery.js"></script>
+<script src="./js/script.js"></script>
+</body>
+</html>

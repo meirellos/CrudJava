@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/update" method="POST" modelAttribute="user">
+
+  ID:<br>
+  <input type="text" name="id" th:value="${user.id}" readOnly="true"><br>
+  <br>
+
+  Nome Aluno:<br>
+  <input type="text" name="name" th:value="${user.name}"><br>
+
+  <br>
+
+  Email Aluno:<br>
+  <input type="text" name="email" th:value="${user.email}"><br>
+
+
+  <input type="submit" value="Atualizar">
+
+</form>
+</body>
+</html>
